@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
 #define BOXES 10
+
+#ifdef _WIN32
+    #define TERM_CLEAR "cls"
+#else
+    #define TERM_CLEAR "clear"
+#endif
 
 char grid[BOXES] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
@@ -18,7 +23,7 @@ void initializeGrid(){
 }
 
 int choiceMenu(){
-    system("cls");
+    system(TERM_CLEAR);
     int choice = 0;
     printf("----------------------------\n");
     printf("|  WELCOME TO TIC-TAC-TOE  |\n");
@@ -50,7 +55,7 @@ int restartChoice(){
 }
 
 void printGrid(){
-    system("cls");
+    system(TERM_CLEAR);
     printf("-------\n");
     printf("| PVP |\n");
     printf("-------\n");
@@ -153,7 +158,7 @@ int main(){
             }while(secondChoice == 1);
             break;
             case 2:
-                system("cls");
+                system(TERM_CLEAR);
                 printf("Thanks for playing :)");
                 printf("GitHub: Gr3st1n");
             break;
